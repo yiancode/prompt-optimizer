@@ -15,6 +15,8 @@
 面向开发者的技术文档、API参考和故障排查
 - 技术开发指南
 - 项目结构说明
+- GitHub Fork初始化指南
+- 通用Fork初始化提示词
 - API文档
 - 架构设计
 - 故障排查清单
@@ -68,7 +70,8 @@
 
 ### 专项文档
 - [LLM参数配置指南](./developer/llm-params-guide.md) - LLM参数配置详细说明
-- [AI开发流程规范](./developer/ai-development-workflow.md) - AI辅助开发的标准化流程
+- [GitHub Fork初始化指南](./developer/github-fork-initialization-guide.md) - 完整的Fork项目初始化流程
+- [通用Fork初始化提示词](./developer/universal-fork-initialization-prompt.md) - 适用于任何开源项目的结构化提示词
 
 ## 📋 使用指南
 

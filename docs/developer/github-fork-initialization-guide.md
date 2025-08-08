@@ -7,8 +7,8 @@
 ## 项目背景
 
 **项目**: Prompt Optimizer (提示词优化器)  
-**原始仓库**: https://github.com/linshenkx/prompt-optimizer  
-**Fork仓库**: https://github.com/yiancode/prompt-optimizer  
+**原始仓库**: <https://github.com/linshenkx/prompt-optimizer>  
+**Fork仓库**: <https://github.com/yiancode/prompt-optimizer>  
 **项目类型**: AI提示词优化工具，支持多平台部署的Monorepo项目
 
 ## 第一阶段：项目分析与理解
@@ -16,6 +16,7 @@
 ### 1.1 代码库结构分析
 
 **执行的分析步骤**:
+
 1. **项目概览分析**: 通过`LS`工具查看根目录结构
 2. **包管理分析**: 检查`package.json`和`pnpm-workspace.yaml`了解依赖关系
 3. **架构分析**: 分析`packages/`目录下的子包结构
@@ -23,6 +24,7 @@
 5. **配置分析**: 检查`.cursorrules`等开发规范文件
 
 **关键发现**:
+
 - Monorepo架构，使用pnpm workspace管理
 - 包含6个子包：core、ui、web、extension、desktop、mcp-server
 - 构建依赖关系：core → ui → (web/extension/desktop并行)
@@ -31,6 +33,7 @@
 ### 1.2 开发环境要求识别
 
 **技术栈**:
+
 - Node.js >= 18
 - pnpm >= 8 (强制要求，不支持npm/yarn)
 - TypeScript
@@ -39,6 +42,7 @@
 - Vite (构建工具)
 
 **关键开发命令**:
+
 ```bash
 # 开发模式
 pnpm dev               # Web开发
@@ -58,6 +62,7 @@ pnpm test            # 运行测试
 **问题诊断**: 发现本地origin指向原始仓库而非fork
 
 **解决步骤**:
+
 ```bash
 # 1. 检查当前配置
 git remote -v
@@ -72,17 +77,20 @@ git remote -v
 ```
 
 **最终配置**:
+
 - `origin`: 指向个人fork仓库 (用于推送代码)
 - `upstream`: 指向原始仓库 (用于同步更新)
 
 ### 2.2 分支同步策略
 
 **上游分支结构**:
+
 - `master`: 主分支 (稳定版本)
 - `develop`: 开发分支 (最新开发版本)
 - 其他版本分支: `1.2.0` 等
 
 **同步操作**:
+
 ```bash
 # 1. 获取上游所有分支
 git fetch upstream
@@ -104,6 +112,7 @@ git branch --set-upstream-to=origin/develop develop
 ### 2.3 创建同步工具
 
 创建`sync-upstream.sh`脚本用于日常同步:
+
 ```bash
 #!/bin/bash
 echo "正在从上游仓库获取最新更改..."
@@ -129,6 +138,7 @@ echo "同步完成！"
 **目的**: 为Claude Code提供项目开发指南
 
 **内容结构**:
+
 1. **项目概述**: 项目介绍和技术栈
 2. **开发环境要求**: Node.js、pnpm版本要求
 3. **常用命令**: 开发、构建、测试命令清单
@@ -138,6 +148,7 @@ echo "同步完成！"
 7. **常见开发任务**: 添加模型、模板、修改存储等
 
 **关键信息**:
+
 - 构建依赖顺序：core → ui → (web/extension/desktop)
 - 存储抽象层支持多平台
 - 统一的API格式和错误处理
@@ -145,6 +156,7 @@ echo "同步完成！"
 ### 3.2 文档质量标准
 
 **遵循原则**:
+
 - 简洁直接，避免冗余信息
 - 提供具体的命令示例
 - 突出项目特有的架构和约束
@@ -155,12 +167,14 @@ echo "同步完成！"
 ### 4.1 提交准备
 
 **检查工作区状态**:
+
 ```bash
 git status          # 查看未跟踪文件
 git diff            # 查看更改内容
 ```
 
 **文件添加**:
+
 ```bash
 git add CLAUDE.md sync-upstream.sh
 ```
@@ -168,7 +182,8 @@ git add CLAUDE.md sync-upstream.sh
 ### 4.2 提交信息规范
 
 **提交格式**:
-```
+
+```text
 <type>(<scope>): <subject>
 
 <body>
@@ -179,6 +194,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **实际提交**:
+
 ```bash
 git commit -m "$(cat <<'EOF'
 docs: 添加 CLAUDE.md 开发指南和上游同步脚本
@@ -201,6 +217,7 @@ git push origin develop
 ```
 
 **验证提交**:
+
 ```bash
 git log --oneline -3  # 查看最近3条提交记录
 ```
@@ -239,6 +256,7 @@ git log --oneline -3  # 查看最近3条提交记录
 ## 适用场景
 
 本流程适用于以下场景:
+
 - Fork开源项目进行贡献
 - Monorepo项目的初始化
 - 需要与上游仓库保持同步的长期开发
